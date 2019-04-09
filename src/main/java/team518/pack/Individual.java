@@ -1,5 +1,5 @@
 package team518.pack;
-
+//Individual
 public class Individual {
 
     private final char GENE_0 = '0';
