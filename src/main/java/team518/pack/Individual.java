@@ -4,7 +4,7 @@ public class Individual {
 
     private final char GENE_0 = '0';
     private final char GENE_1 = '1';
-    private final int GENE_LENGTH = 30;
+    private final int GENE_LENGTH = 46;
 
     private String gene; //genotype
 
@@ -24,16 +24,30 @@ public class Individual {
 
     public void createPhenotype () {
         //TODO: Generate Phenotype According To Genotype
-        String subGeneX = "";
-        String subGeneY = "";
-        String subGeneZ = "";
-        xPosition = 0;
-        yPosition = 0;
-        zPosition = 0;
+        //gene = "0000000000000000000000000000000000000000000000";
+        //gene = "1111111111111111111111111111111111111111111111";
+        String subGeneX = gene.substring(0,23);
+        String subGeneY = gene.substring(23,46);
+        int subX = Integer.parseInt(subGeneX,2);
+        int subY = Integer.parseInt(subGeneY,2);
+        System.out.println(subX);
+        System.out.println(subY);
+        //String subGeneZ = ""; //Start with 2D first
+        xPosition = subX * (10.0 - 0) / (Math.pow(2, 23) - 1);
+        yPosition = subY * (10.0 - 0) / (Math.pow(2, 23) - 1);
+        //zPosition = 0;
     }
 
     public String getGene () {
         return this.gene;
+    }
+
+    public double getxPosition () {
+        return this.xPosition;
+    }
+
+    public double getyPosition() {
+        return this.yPosition;
     }
 
     private String initGene() {

@@ -6,7 +6,9 @@ public class OutPutTest {
         Individual ind = new Individual();
         ind.createGenotype();
         ind.createPhenotype();
-        System.out.print(ind.getGene());
+        System.out.println(ind.getGene());
+        System.out.println(ind.getxPosition());
+        System.out.println(ind.getyPosition());
     }
 
     public static void main (String[] arg) {
