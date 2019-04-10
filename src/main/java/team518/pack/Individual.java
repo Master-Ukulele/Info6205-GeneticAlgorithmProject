@@ -53,7 +53,7 @@ public class Individual {
     private String initGene() {
         String res = "";
         for (int i = 0; i < GENE_LENGTH; i++) {
-            if (Math.random() > 0.5) {
+            if (Math.random() < 0.5) { // A little improvement to fix a pseud random
                 res += GENE_0;
             } else {
                 res += GENE_1;
