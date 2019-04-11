@@ -4,27 +4,29 @@ import java.sql.SQLOutput;
 
 public class OutPutTest {
 
-    public static void print () {
-//        Individual ind = new Individual();
-//        ind.createGenotype();
-//        ind.createPhenotype();
-//        System.out.println(ind.getGene());
-//        System.out.println(ind.getxPosition());
-//        System.out.println(ind.getyPosition());
-
-       // Galaxy Test
-//        Galaxy galaxy = new Galaxy();
-//        galaxy.createMine();
+    public static void print() {
+/**
+        Galaxy Test:
+*/
+        Galaxy galaxy = new Galaxy(4);
 //        System.out.println(galaxy.getMine().getxPosition());
 //        System.out.println(galaxy.getMine().getyPosition());
 
-        //Fitness Test
-        Fitness fitness = new Fitness ();
-        double x =fitness.fit (0,0,12,5);
-        System.out.println (x);
+        for (Individual a : galaxy.getIndividuals()) {
+            System.out.println(a.getGene());
+            System.out.println(a.getRadiationStrength());
+        }
+        System.out.println("\n");
+
+        Species.selection(galaxy.getIndividuals(), galaxy.getMine());
+        for (Individual a : galaxy.getIndividuals()) {
+            System.out.println(a.getGene());
+            System.out.println(a.getRadiationStrength());
+        }
+
     }
 
-    public static void main (String[] arg) {
+    public static void main(String[] arg) {
         print();
     }
 }

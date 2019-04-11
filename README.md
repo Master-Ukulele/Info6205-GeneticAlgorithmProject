@@ -1,5 +1,5 @@
 # Genetic Algorithm, Team 518
-This is the repository of our final project, Team 518, INFO6205
+This is the repository of our final project, Team 518, INFO6205  
 Team members: Siyu Tu, Yiyin Chen and Yue Zheng
 
 # About this project

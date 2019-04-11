@@ -3,8 +3,25 @@ package team518.pack;
 public class Galaxy {
     private double xMax = 10;
     private double yMax = 10;
+    private Individual[] individuals;
     private Mine mine; //Use a container later to storage more mines, e.g. Array, better with HashTable
     //private Blocker blocker; //Design blocker later and its container
+
+    public Galaxy(int N){
+        createMine();
+        initIndividuals(N);
+    }
+
+    private void initIndividuals(int N) {
+        individuals = new Individual[N];
+        for (int i=0; i<individuals.length; i++) {
+            individuals[i] = new Individual(this.mine);
+        }
+    }
+
+    public Individual[] getIndividuals() {
+        return individuals;
+    }
 
     public void createMine () {
         this.mine = new Mine();
@@ -14,32 +31,5 @@ public class Galaxy {
 
     public Mine getMine() {
         return mine;
-    }
-
-    public void setMine(Mine mine) {
-        this.mine = mine;
-    }
-
-    public class Mine {
-        private double xPosition;
-        private double yPosition;
-        //private double zPosition;
-        //private double reserves; //Later, a constant related to radiation strength
-
-        public double getxPosition() {
-            return xPosition;
-        }
-
-        public void setxPosition(double xPosition) {
-            this.xPosition = xPosition;
-        }
-
-        public double getyPosition() {
-            return yPosition;
-        }
-
-        public void setyPosition(double yPosition) {
-            this.yPosition = yPosition;
-        }
     }
 }

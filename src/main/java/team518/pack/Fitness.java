@@ -1,7 +1,7 @@
 package team518.pack;
 
 public class Fitness {
-	public double fit(double x, double y, double X, double Y){
+	public static double fit(double x, double y, double X, double Y){
 		double fitness;
 		double x_d = X-x;
 		double y_d = Y-y;
