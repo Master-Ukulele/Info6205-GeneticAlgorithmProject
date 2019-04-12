@@ -19,6 +19,10 @@ public class Individual implements Comparable<Individual>{
         updateRadiation(mine);
     }
 
+    public Individual () {
+        createGenotype();
+    }
+
     public void createGenotype () {
         this.gene = initGene();
         createPhenotype();
@@ -78,6 +82,9 @@ public class Individual implements Comparable<Individual>{
         return res;
     }
 
+    public void setGene (String gene) {
+        this.gene = gene;
+    }
     @Override
     public int compareTo(Individual o) {
         if (this.radiationStrength < o.getRadiationStrength()) return -1;
