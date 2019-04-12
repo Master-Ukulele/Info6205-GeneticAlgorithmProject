@@ -14,11 +14,6 @@ public class Individual implements Comparable<Individual>{
 
     private double radiationStrength; //fitness
 
-    public Individual (Mine mine) {
-        createGenotype();
-        updateRadiation(mine);
-    }
-
     public Individual () {
         createGenotype();
     }
@@ -58,8 +53,8 @@ public class Individual implements Comparable<Individual>{
         return this.radiationStrength;
     }
 
-    public void updateRadiation(Mine mine) {
-        this.radiationStrength = Fitness.fit(this.xPosition, this.yPosition, mine.getxPosition(), mine.getyPosition());
+    public void setRadiation(double radiation) {
+        this.radiationStrength = radiation;
     }
 
     public void setxPosition(double xPosition) {

@@ -1,22 +1,41 @@
 package team518.pack;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Species {
+
 
     public static void selection(Individual[] individuals, Mine mine) {
         // Replace the lower half of the array with mutated genes
 
         Arrays.sort(individuals);
+        Random random = new Random();
         int n = individuals.length;
-        int boo = n % 2 == 0 ? n : n - 1;
 
-//        for (int i = n / 2; i < boo; i += 2) {
-//            individuals[i] = crossover1(individuals[i - n / 2]);
-//            individuals[i - n / 2] = crossover2(individuals[i - n / 2]);
-//            individuals[i].updateRadiation(mine);
-//            individuals[i - n / 2].updateRadiation(mine);
-//        }
+        for (int i = n / 2; i < n; i++) {
+            int r1 = random.nextInt(n / 2 - 1), r2 = random.nextInt(n / 2 - 1);
+            r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
+            crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+            updateIndividual(individuals[i], mine);
+        }
+    }
+
+    private static void crossOver(Individual target, String gene1, String gene2) {
+        String res = "";
+        for (int i = 0; i < 46; i++) {
+            if (Math.random() < 0.5) {
+                res += gene1.charAt(i);
+            } else {
+                res += gene2.charAt(i);
+            }
+        }
+        target.setGene(res);
+    }
+
+    private static void updateIndividual(Individual individual, Mine mine) {
+        individual.createPhenotype();
+        individual.setRadiation(Fitness.fit(individual, mine));
     }
 
 //    private static Individual crossover1(Individual individual) {
@@ -60,15 +79,4 @@ public class Species {
 //
 //        return res2;
 //    }
-    public static void corrossOver (Individual target, String gene1, String gene2) {
-        String res = "";
-        for (int i = 0; i < 46; i++) {
-            if (Math.random() < 0.5) {
-                res += gene1.charAt(i);
-            } else {
-                res += gene2.charAt(i);
-            }
-        }
-        target.setGene(res);
-    }
 }

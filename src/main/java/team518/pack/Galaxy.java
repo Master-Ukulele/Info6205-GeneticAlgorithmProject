@@ -15,7 +15,8 @@ public class Galaxy {
     private void initIndividuals(int N) {
         individuals = new Individual[N];
         for (int i=0; i<individuals.length; i++) {
-            individuals[i] = new Individual(this.mine);
+            individuals[i] = new Individual();
+            individuals[i].setRadiation(Fitness.fit(individuals[i], mine));
         }
     }
 
