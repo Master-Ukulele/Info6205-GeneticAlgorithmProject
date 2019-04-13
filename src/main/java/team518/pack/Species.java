@@ -3,25 +3,47 @@ package team518.pack;
 import java.util.Arrays;
 import java.util.Random;
 
+import static team518.pack.Fitness.*;
+
 public class Species {
 
+    private static Random random;
 
-    public static void selection(Individual[] individuals, Mine mine) {
+    public static Individual[] select(Individual[] individuals, Mine mine) {
+        int num = individuals.length;
+        Individual[] newSpecies = new Individual[num/2];
+        shuffle(individuals);
+        for(int i=0;i<num/2;i++){
+            Individual i1 = individuals[i];
+            Individual i2= individuals[i+1];
+            Double f1 = Fitness.fit(i1,mine);
+            Double f2 = Fitness.fit(i2,mine);
+            if(f1>f2) {
+                newSpecies[i] = i1;
+            }
+            else{
+                newSpecies[i] = i2;
+            }
+        }
+
+        return newSpecies;
+
+//    public static void selection(Individual[] individuals, Mine mine) {
         // Replace the lower half of the array with mutated genes
 
-        Arrays.sort(individuals);
-        Random random = new Random();
-        int n = individuals.length;
+//        Arrays.sort(individuals);
+//        Random random = new Random();
+//        int n = individuals.length;
 
 //        for (int i = n / 2; i < n; i++) {
-        for (int i = n/2; i < n; i++) {
-            int r1 = random.nextInt(n / 2 ); //r2 = random.nextInt(n / 2 - 1);
-            //r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
-            mutation(individuals[i], individuals[r1].getGene());
-            //crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
-            updateIndividual(individuals[i], mine);
-        }
-        Arrays.sort(individuals);
+//        for (int i = n/2; i < n; i++) {
+//            int r1 = random.nextInt(n / 2 ); //r2 = random.nextInt(n / 2 - 1);
+//            //r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
+//            mutation(individuals[i], individuals[r1].getGene());
+//            //crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+//            updateIndividual(individuals[i], mine);
+//        }
+//        Arrays.sort(individuals);
     }
 
     private static void crossOver(Individual target, String gene1, String gene2) {
@@ -56,6 +78,17 @@ public class Species {
     private static void updateIndividual(Individual individual, Mine mine) {
         individual.createPhenotype();
         individual.setRadiation(Fitness.fit(individual, mine));
+    }
+
+    public static void shuffle(Individual[] arr){
+        random = new Random();
+        int n = arr.length;
+        for(int i=0;i<n;i++){
+            int r = random.nextInt (n-1);
+            Individual tmp = arr[r];
+            arr[r] = arr[i];
+            arr[i] = tmp;
+        }
     }
 
 //    private static Individual crossover1(Individual individual) {
