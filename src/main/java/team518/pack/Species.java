@@ -9,24 +9,30 @@ public class Species {
 
     private static Random random;
 
-    public static Individual[] select(Individual[] individuals, Mine mine) {
+    public static void select(Individual[] individuals, Individual[] newSpecies, Mine mine) {
         int num = individuals.length;
-        Individual[] newSpecies = new Individual[num/2];
+        //Individual[] newSpecies = new Individual[num];
         shuffle(individuals);
-        for(int i=0;i<num/2;i++){
+        for (int i = 0; i < num / 2; i++) {
             Individual i1 = individuals[i];
-            Individual i2= individuals[i+1];
-            Double f1 = Fitness.fit(i1,mine);
-            Double f2 = Fitness.fit(i2,mine);
-            if(f1>f2) {
+            Individual i2 = individuals[i + 1];
+            Double f1 = Fitness.fit(i1, mine);
+            Double f2 = Fitness.fit(i2, mine);
+            if (f1 > f2) {
                 newSpecies[i] = i1;
-            }
-            else{
+            } else {
                 newSpecies[i] = i2;
             }
         }
 
-        return newSpecies;
+        for (int i = num / 2; i < num; i++) {
+            int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
+            r2 = r2 == r1 ? random.nextInt(num / 2 - 1) : r2;
+            //mutation(individuals[i], individuals[r1].getGene());
+            crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+            updateIndividual(individuals[i], mine);
+        }
+    }
 
 //    public static void selection(Individual[] individuals, Mine mine) {
         // Replace the lower half of the array with mutated genes
@@ -44,7 +50,6 @@ public class Species {
 //            updateIndividual(individuals[i], mine);
 //        }
 //        Arrays.sort(individuals);
-    }
 
     private static void crossOver(Individual target, String gene1, String gene2) {
         String res = "";
