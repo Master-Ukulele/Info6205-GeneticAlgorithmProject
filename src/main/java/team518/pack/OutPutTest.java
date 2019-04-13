@@ -9,7 +9,7 @@ public class OutPutTest {
 /**
  Galaxy Test:
  */
-        Galaxy galaxy = new Galaxy(1000);
+        Galaxy galaxy = new Galaxy(10);
         System.out.println(galaxy.getMine().getxPosition());
         System.out.println(galaxy.getMine().getyPosition());
         System.out.print("\n");
@@ -23,8 +23,8 @@ public class OutPutTest {
         System.arraycopy(galaxy.getIndividuals(), 0, aux, 0, aux.length);
 
         for (int i = 0; i < 1000; i++) {
-            //Species.selection(galaxy.getIndividuals(), galaxy.getMine());
-            Species.select(galaxy.getIndividuals(), aux, galaxy.getMine());
+            Species.select(galaxy.getIndividuals(), galaxy.getMine());
+//            Species.select(galaxy.getIndividuals(), aux, galaxy.getMine());
         }
 //
         for (Individual a : galaxy.getIndividuals()) {

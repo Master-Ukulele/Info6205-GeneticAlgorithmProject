@@ -9,47 +9,48 @@ public class Species {
 
     private static Random random;
 
-    public static void select(Individual[] individuals, Individual[] newSpecies, Mine mine) {
-        int num = individuals.length;
-        //Individual[] newSpecies = new Individual[num];
-        shuffle(individuals);
-        for (int i = 0; i < num / 2; i++) {
-            Individual i1 = individuals[i];
-            Individual i2 = individuals[i + 1];
-            Double f1 = Fitness.fit(i1, mine);
-            Double f2 = Fitness.fit(i2, mine);
-            if (f1 > f2) {
-                newSpecies[i] = i1;
-            } else {
-                newSpecies[i] = i2;
-            }
-        }
-
-        for (int i = num / 2; i < num; i++) {
-            int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
-            r2 = r2 == r1 ? random.nextInt(num / 2 - 1) : r2;
-            //mutation(individuals[i], individuals[r1].getGene());
-            crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
-            updateIndividual(individuals[i], mine);
-        }
-    }
-
-//    public static void selection(Individual[] individuals, Mine mine) {
-        // Replace the lower half of the array with mutated genes
-
-//        Arrays.sort(individuals);
-//        Random random = new Random();
-//        int n = individuals.length;
-
-//        for (int i = n / 2; i < n; i++) {
-//        for (int i = n/2; i < n; i++) {
-//            int r1 = random.nextInt(n / 2 ); //r2 = random.nextInt(n / 2 - 1);
-//            //r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
-//            mutation(individuals[i], individuals[r1].getGene());
-//            //crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+//    public static void select(Individual[] individuals, Individual[] newSpecies, Mine mine) {
+//        int num = individuals.length;
+//        //Individual[] newSpecies = new Individual[num];
+//        shuffle(individuals);
+//        for (int i = 0; i < num / 2; i++) {
+//            Individual i1 = individuals[i];
+//            Individual i2 = individuals[i + 1];
+//            Double f1 = Fitness.fit(i1, mine);
+//            Double f2 = Fitness.fit(i2, mine);
+//            if (f1 > f2) {
+//                newSpecies[i] = i1;
+//            } else {
+//                newSpecies[i] = i2;
+//            }
+//        }
+//
+//        for (int i = num / 2; i < num; i++) {
+//            int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
+//            r2 = r2 == r1 ? random.nextInt(num / 2 - 1) : r2;
+//            //mutation(individuals[i], individuals[r1].getGene());
+//            crossOverV2(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
 //            updateIndividual(individuals[i], mine);
 //        }
-//        Arrays.sort(individuals);
+//    }
+
+    public static void select(Individual[] individuals, Mine mine) {
+//     Replace the lower half of the array with mutated genes
+
+        Arrays.sort(individuals);
+        Random random = new Random();
+        int n = individuals.length;
+
+        for (int i = n / 2; i < n; i++) {
+            int r1 = random.nextInt(n / 2), r2 = random.nextInt(n / 2 - 1);
+            r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
+//                mutation(individuals[i], individuals[r1].getGene());
+            crossOverV2(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+            updateIndividual(individuals[i], mine);
+        }
+        Arrays.sort(individuals);
+
+    }
 
     private static void crossOver(Individual target, String gene1, String gene2) {
         String res = "";
@@ -63,8 +64,53 @@ public class Species {
         target.setGene(res);
     }
 
-    private static void crossOverV2 (Individual target, String gene1, String gene2) {
-        //TO IMPLEMENT NewTest
+    private static void crossOverV2(Individual target, String gene1, String gene2) {
+        char[] r = new char[46];
+        char[] g1 = gene1.toCharArray();
+        char[] g2 = gene2.toCharArray();
+
+        int start = (int) Math.random() * 23;
+        for (int i = start; i < start + 23; i++) {
+            r[i] = g1[i];
+        }
+
+        if (start == 0) {
+            char[] ttEnd = gene2.substring(23, 46).toCharArray();
+            shuffle_char(ttEnd);
+            for (int i = 23; i < 46; i++) {
+                r[i] = ttEnd[i - 23];
+            }
+        } else if (start == 22) {
+            char[] ttStart = gene2.substring(0, 23).toCharArray();
+//            shuffle_char(ttStart);
+            for (int i = 0; i < 23; i++) {
+                r[i] = ttStart[i];
+            }
+        } else {
+            char[] ttStart = gene2.substring(0, start).toCharArray();
+            char[] ttEnd = gene2.substring(start + 23, 46).toCharArray();
+            shuffle_char(ttStart);
+            shuffle_char(ttEnd);
+            for (int i = 0; i < start; i++) {
+                r[i] = ttStart[i];
+            }
+            for (int i = start + 23; i < 46; i++) {
+                r[i] = ttEnd[i - start - 23];
+            }
+        }
+        String x = new String(r);
+        target.setGene(x);
+    }
+
+    public static void shuffle_char(char[] c) {
+        Random random = new Random();
+        int n = c.length;
+        for (int i = 0; i < n; i++) {
+            int r = random.nextInt(n);
+            char tmp = c[r];
+            c[r] = c[i];
+            c[i] = tmp;
+        }
     }
 
     private static void mutation(Individual target, String gene) {
@@ -89,11 +135,11 @@ public class Species {
         individual.setRadiation(Fitness.fit(individual, mine));
     }
 
-    public static void shuffle(Individual[] arr){
+    public static void shuffle(Individual[] arr) {
         random = new Random();
         int n = arr.length;
-        for(int i=0;i<n;i++){
-            int r = random.nextInt (n-1);
+        for (int i = 0; i < n; i++) {
+            int r = random.nextInt(n - 1);
             Individual tmp = arr[r];
             arr[r] = arr[i];
             arr[i] = tmp;
