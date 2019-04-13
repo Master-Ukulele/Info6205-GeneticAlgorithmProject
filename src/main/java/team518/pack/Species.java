@@ -63,6 +63,10 @@ public class Species {
         target.setGene(res);
     }
 
+    private static void crossOverV2 (Individual target, String gene1, String gene2) {
+        //TO IMPLEMENT NewTest
+    }
+
     private static void mutation(Individual target, String gene) {
         String res = "";
         for (int i = 0; i < 46; i++) {
