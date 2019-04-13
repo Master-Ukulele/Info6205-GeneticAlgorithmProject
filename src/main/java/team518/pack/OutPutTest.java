@@ -8,21 +8,22 @@ public class OutPutTest {
 /**
  Galaxy Test:
  */
-        Galaxy galaxy = new Galaxy(6);
-//        System.out.println(galaxy.getMine().getxPosition());
-//        System.out.println(galaxy.getMine().getyPosition());
+        Galaxy galaxy = new Galaxy(10);
+        System.out.println(galaxy.getMine().getxPosition());
+        System.out.println(galaxy.getMine().getyPosition());
+        System.out.print("\n");
 
-//        for (Individual a : galaxy.getIndividuals()) {
+        for (Individual a : galaxy.getIndividuals()) {
 //            System.out.println(a.getGene());
-//            System.out.println(a.getRadiationStrength());
-//        }
-//        System.out.println("\n");
+            System.out.println(a.getRadiationStrength());
+        }
+        System.out.println("\n");
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             Species.selection(galaxy.getIndividuals(), galaxy.getMine());
         }
         for (Individual a : galaxy.getIndividuals()) {
-            System.out.println(a.getGene());
+//            System.out.println(a.getGene());
             System.out.println(a.getRadiationStrength());
         }
 //        Individual i = new Individual();

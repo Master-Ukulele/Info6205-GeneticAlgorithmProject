@@ -13,12 +13,15 @@ public class Species {
         Random random = new Random();
         int n = individuals.length;
 
-        for (int i = n / 2; i < n; i++) {
-            int r1 = random.nextInt(n / 2 - 1), r2 = random.nextInt(n / 2 - 1);
-            r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
-            crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
+//        for (int i = n / 2; i < n; i++) {
+        for (int i = n/2; i < n; i++) {
+            int r1 = random.nextInt(n / 2 ); //r2 = random.nextInt(n / 2 - 1);
+            //r2 = r2 == r1 ? random.nextInt(n / 2 - 1) : r2;
+            mutation(individuals[i], individuals[r1].getGene());
+            //crossOver(individuals[i], individuals[r1].getGene(), individuals[r2].getGene());
             updateIndividual(individuals[i], mine);
         }
+        Arrays.sort(individuals);
     }
 
     private static void crossOver(Individual target, String gene1, String gene2) {
@@ -28,6 +31,23 @@ public class Species {
                 res += gene1.charAt(i);
             } else {
                 res += gene2.charAt(i);
+            }
+        }
+        target.setGene(res);
+    }
+
+    private static void mutation(Individual target, String gene) {
+        String res = "";
+        for (int i = 0; i < 46; i++) {
+            if (Math.random() < 0.1) {
+                char c = gene.charAt(i);
+                if (c == '0') {
+                    res += '1';
+                } else {
+                    res += '0';
+                }
+            } else {
+                res += gene.charAt(i);
             }
         }
         target.setGene(res);
