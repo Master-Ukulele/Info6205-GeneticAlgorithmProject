@@ -10,21 +10,17 @@ public class Species {
 
         int num = individuals.length;
         shuffle(individuals);
-        for (int i = 0; i < num; i=i+2) {
+        for (int i = 0; i < num; i = i + 2) {
             Individual i1 = individuals[i];
             Individual i2 = individuals[i + 1];
-            Double f1 = Fitness.fit(i1, mine);
-            Double f2 = Fitness.fit(i2, mine);
-            if (f1 < f2) { // Change this logic into compareTo() later
-                aux[i/2] = i1;
-            } else {
-                aux[i/2] = i2;
-            }
+            double f1 = Fitness.fit(i1, mine);
+            double f2 = Fitness.fit(i2, mine);
+            aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
         }
 
         for (int i = num / 2; i < num; i++) {
             int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
-            r2 = r2 == r1 ? random.nextInt(num / 2 - 1) : r2;
+            while (r2 == r1) r2 = random.nextInt(num / 2 - 1);
             //TODO: Bug exist, r1 sometimes equals r2, causing the inbreeding.
             // It could be eliminated by fixing.
             // Specifically, the possibility of inbreeding would reduce.
@@ -34,8 +30,7 @@ public class Species {
             mutation(aux[i], aux[i].getGene());
             updateIndividual(aux[i], mine);
         }
-
-        System.arraycopy(aux,0,individuals,0,aux.length);
+        System.arraycopy(aux, 0, individuals, 0, aux.length);
     }
 
     private static void crossOver(Individual target, String gene1, String gene2) {
@@ -72,7 +67,7 @@ public class Species {
         individual.setRadiation(Fitness.fit(individual, mine));
     }
 
-    public static void shuffle(Individual[] arr) {
+    private static void shuffle(Individual[] arr) {
         random = new Random();
         int n = arr.length;
         for (int i = 0; i < n; i++) {

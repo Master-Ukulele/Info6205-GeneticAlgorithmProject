@@ -80,6 +80,7 @@ public class Individual implements Comparable<Individual>{
     public void setGene (String gene) {
         this.gene = gene;
     }
+
     @Override
     public int compareTo(Individual o) {
         if (this.radiationStrength < o.getRadiationStrength()) return -1;

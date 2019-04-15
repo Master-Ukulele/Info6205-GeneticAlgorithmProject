@@ -21,14 +21,14 @@ public class OutPutTest {
         Individual[] aux = new Individual[galaxy.getIndividuals().length];
         System.arraycopy(galaxy.getIndividuals(), 0, aux, 0, aux.length);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
 //            Species.select(galaxy.getIndividuals(), galaxy.getMine());
             Species.select(galaxy.getIndividuals(), aux, galaxy.getMine());
         }
-//
-        for (Individual a : galaxy.getIndividuals()) {
-//            System.out.println(a.getGene());
-            System.out.println(a.getRadiationStrength());
+
+        for (int i=0 ; i< aux.length; i++) {
+            System.out.println(galaxy.getIndividuals()[i].getRadiationStrength());
+//            System.out.println(aux[i].getRadiationStrength());
         }
 
     }
