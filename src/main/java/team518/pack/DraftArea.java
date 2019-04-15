@@ -5,6 +5,18 @@ import java.util.Random;
 
 public class DraftArea {
 
+
+	public static double fit(Individual individual, Mine mine){
+		double fitness; //signal strength
+		double d;//distance
+		double x = individual.getxPosition(), y = individual.getyPosition(),
+				X = mine.getxPosition(), Y = mine.getyPosition();
+		double x_d = X-x;
+		double y_d = Y-y;
+		d = Math.sqrt (Math.pow (x_d,2)+Math.pow (y_d,2));
+		fitness = mine.getRadiation ()/d*d;
+		return fitness;
+	}
     /**
     private static String crossOverV2 (String gene1, String gene2) {
         //String res="";
