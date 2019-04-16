@@ -3,6 +3,7 @@ package team518.pack;
 public class Mine {
     private double xPosition;
     private double yPosition;
+    private double zPosition;
     private double radiation;
     //private double zPosition;
     //private double reserves; //Later, a constant related to radiation strength
@@ -28,5 +29,13 @@ public class Mine {
 
     public void setRadiation (double radiation) {
         this.radiation = radiation;
+    }
+
+    public double getzPosition () {
+        return zPosition;
+    }
+
+    public void setzPosition (double zPosition) {
+        this.zPosition = zPosition;
     }
 }

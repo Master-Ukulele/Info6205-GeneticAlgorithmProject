@@ -15,7 +15,7 @@ public class Species {
             Individual i2 = individuals[i + 1];
             double f1 = Fitness.fit(i1, mine);
             double f2 = Fitness.fit(i2, mine);
-            aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
+            aux[i / 2] = f1 > f2 ? i1 : i2;  // Change this logic into compareTo() later
         }
 
         for (int i = num / 2; i < num; i++) {
@@ -35,7 +35,7 @@ public class Species {
 
     private static void crossOver(Individual target, String gene1, String gene2) {
         String res = "";
-        for (int i = 0; i < 46; i++) {
+        for (int i = 0; i < 30; i++) {
             if (Math.random() < 0.5) {
                 res += gene1.charAt(i);
             } else {
@@ -47,7 +47,7 @@ public class Species {
 
     private static void mutation(Individual target, String gene) {
         String res = "";
-        for (int i = 0; i < 46; i++) {
+        for (int i = 0; i < 30; i++) {
             if (Math.random() < 0.05) {
                 char c = gene.charAt(i);
                 if (c == '0') {
@@ -64,7 +64,7 @@ public class Species {
 
     private static void updateIndividual(Individual individual, Mine mine) {
         individual.createPhenotype();
-        individual.setRadiation(Fitness.fit(individual, mine));
+        individual.setFitness (Fitness.fit(individual, mine));
     }
 
     private static void shuffle(Individual[] arr) {
