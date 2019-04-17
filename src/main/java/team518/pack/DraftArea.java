@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class DraftArea {
 
-
+	/**
 	public static double fit(Individual individual, Mine mine){
 		double fitness; //signal strength
 		double d;//distance
@@ -17,6 +17,8 @@ public class DraftArea {
 		fitness = mine.getRadiation ()/d*d;
 		return fitness;
 	}
+	 *///----------------------------
+
     /**
     private static String crossOverV2 (String gene1, String gene2) {
         //String res="";
@@ -204,4 +206,16 @@ public class DraftArea {
         System.out.println(result +"\n" + s1 );
     }
     *///----------------------------
+
+	/**
+	public static void main (String[] arg) {
+		Galaxy galaxy = new Galaxy(10);
+		Arrays.stream(galaxy.getMine_array()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+					System.out.print("\t");
+					System.out.println(x.getRadiation());
+		});
+	}
+ 	*///----------------------------
+
 }
