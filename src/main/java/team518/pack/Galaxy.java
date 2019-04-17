@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Galaxy {
+    private ArrayList<Mine> result_list;
     private double xMax = 10;
     private double yMax = 10;
     private double zMax = 10;
@@ -35,6 +36,7 @@ public class Galaxy {
     private Map<Integer, Mine[]> mine_map;
 
     public Galaxy(int N){
+        setResult_list(new ArrayList<>());
         createMine();
         initIndividuals(N);
         createMine_Array(40);
@@ -308,5 +310,14 @@ public class Galaxy {
 
     public Individual[] getSub_individuals_8() {
         return sub_individuals_8;
+    }
+
+
+    public ArrayList<Mine> getResult_list() {
+        return result_list;
+    }
+
+    public void setResult_list(ArrayList<Mine> result_list) {
+        this.result_list = result_list;
     }
 }

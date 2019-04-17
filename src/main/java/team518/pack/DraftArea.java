@@ -218,6 +218,7 @@ public class DraftArea {
 	}
  	*///----------------------------
 
+	/**
 	private static void printMine () {
 		Galaxy galaxy = new Galaxy(10);
 		Arrays.stream(galaxy.getMine_array_1()).forEach((x)
@@ -268,7 +269,9 @@ public class DraftArea {
 			System.out.println(x.getRadiation());
 		});
 	}
+ 	*///----------------------------
 
+	/**
 	private static void printIndividual () {
 		Galaxy galaxy = new Galaxy(10);
 		for(Individual x : galaxy.getSub_individuals_1()) {
@@ -311,9 +314,13 @@ public class DraftArea {
 		}
 		System.out.print("\n");
 	}
+	 *///----------------------------
+
+	/**
 	public static void main (String[] arg) {
 		printMine();
 		System.out.println("------");
 		printIndividual();
 	}
+ 	*///----------------------------
 }
