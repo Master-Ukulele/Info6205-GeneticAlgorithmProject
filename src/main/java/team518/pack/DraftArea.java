@@ -218,4 +218,48 @@ public class DraftArea {
 	}
  	*///----------------------------
 
+	public static void main (String[] arg) {
+		Galaxy galaxy = new Galaxy(10);
+		galaxy.split();
+		Arrays.stream(galaxy.getMine_array_1()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+					System.out.print("\t");
+					System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_2()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_3()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_4()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_5()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_6()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_7()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+		Arrays.stream(galaxy.getMine_array_8()).forEach((x)
+				-> {System.out.print(x.getxPosition());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
+		});
+	}
 }
