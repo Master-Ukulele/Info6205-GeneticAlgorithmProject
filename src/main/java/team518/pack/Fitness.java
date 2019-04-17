@@ -10,7 +10,7 @@ public class Fitness {
 		double y_d = Y-y;
 		double z_d = Z-z;
 		d = Math.sqrt (Math.pow (x_d,2)+Math.pow (y_d,2)+Math.pow (z_d,2));
-		fitness = mine.getRadiation ()/(d*d);
+		fitness = 1/(mine.getRadiation ()/(d*d));
 		return fitness;
 		//return d;
 

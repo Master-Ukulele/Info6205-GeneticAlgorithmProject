@@ -23,7 +23,7 @@ public class OutPutTest {
         Individual[] aux = new Individual[galaxy.getIndividuals().length];
         System.arraycopy(galaxy.getIndividuals(), 0, aux, 0, aux.length);
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
 //            Species.select(galaxy.getIndividuals(), galaxy.getMine());
             Species.select(galaxy.getIndividuals(), aux, galaxy.getMine());
         }

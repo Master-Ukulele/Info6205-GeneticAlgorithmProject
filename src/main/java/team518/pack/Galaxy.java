@@ -30,7 +30,7 @@ public class Galaxy {
         mine.setxPosition(Math.random() * xMax); // 0 <= x < xMax
         mine.setyPosition(Math.random() * yMax);
         mine.setzPosition(Math.random() * zMax);
-        mine.setRadiation (1000);
+        mine.setRadiation (10);
     }
 
     public Mine getMine() {

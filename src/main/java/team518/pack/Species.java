@@ -15,7 +15,7 @@ public class Species {
             Individual i2 = individuals[i + 1];
             double f1 = Fitness.fit(i1, mine);
             double f2 = Fitness.fit(i2, mine);
-            aux[i / 2] = f1 > f2 ? i1 : i2;  // Change this logic into compareTo() later
+            aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
         }
 
         for (int i = num / 2; i < num; i++) {
