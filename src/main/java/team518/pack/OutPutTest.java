@@ -1,10 +1,14 @@
 package team518.pack;
 
+import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class OutPutTest {
 
@@ -57,15 +61,40 @@ public class OutPutTest {
     }
 
     public static void main(String[] arg) {
-        print();
+        Galaxy galaxy = new Galaxy (10);
+        paralel (galaxy);
+
     }
-    public static void paralel(){
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
-        for(int i = 0; i<10; i++)
-        {
-            Thread thread = new Thread (new myThread(i));
-            executorService.execute (thread);
-        }
+    public static void paralel(Galaxy galaxy){
+
+        ArrayList<Mine> m_array = new ArrayList<> ();
+
+        ExecutorService executorService = Executors.newFixedThreadPool(8);
+        Thread thread1 = new Thread (new myThread(galaxy.getSub_individuals_1 (),galaxy.getMine_array_1 (),1,m_array));
+        executorService.execute (thread1);
         executorService.shutdown ();
+//        System.out.println (m_array.get (0).toString ());
+
+//        Thread thread2 = new Thread (new myThread(galaxy.getSub_individuals_2 (),galaxy.getMine_array_2 (),2));
+//        executorService.execute (thread2);
+//
+//        Thread thread3 = new Thread (new myThread(galaxy.getSub_individuals_3 (),galaxy.getMine_array_3 (),3));
+//        executorService.execute (thread3);
+
+//        Thread thread4 = new Thread (new myThread(galaxy.getSub_individuals_4 (),galaxy.getMine_array_4 (),4));
+//        executorService.execute (thread4);
+//
+//        Thread thread5 = new Thread (new myThread(galaxy.getSub_individuals_5 (),galaxy.getMine_array_5 (),5));
+//        executorService.execute (thread5);
+//
+//        Thread thread6 = new Thread (new myThread(galaxy.getSub_individuals_6 (),galaxy.getMine_array_6 (),6));
+//        executorService.execute (thread6);
+//
+//        Thread thread7 = new Thread (new myThread(galaxy.getSub_individuals_7 (),galaxy.getMine_array_7 (),7));
+//        executorService.execute (thread7);
+//
+//        Thread thread8 = new Thread (new myThread(galaxy.getSub_individuals_8 (),galaxy.getMine_array_8 (),8));
+//        executorService.execute (thread8);
+
     }
 }

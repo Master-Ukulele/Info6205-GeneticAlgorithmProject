@@ -106,72 +106,48 @@ public class Galaxy {
         sub_individuals_1 = new Individual[N];
         for (int i=0; i<sub_individuals_1.length; i++) {
             sub_individuals_1[i] = new Individual();
-            if (mine_array_1.length == 0) {
-                break;
-            }
             sub_individuals_1[i].setFitness(Fitness.fit(sub_individuals_1[i], mine_array_1));
         }
 
         sub_individuals_2 = new Individual[N];
         for (int i=0; i<sub_individuals_2.length; i++) {
             sub_individuals_2[i] = new Individual();
-            if (mine_array_2.length == 0) {
-                break;
-            }
             sub_individuals_2[i].setFitness(Fitness.fit(sub_individuals_2[i], mine_array_2));
         }
 
         sub_individuals_3 = new Individual[N];
         for (int i=0; i<sub_individuals_3.length; i++) {
             sub_individuals_3[i] = new Individual();
-            if (mine_array_3.length == 0) {
-                break;
-            }
             sub_individuals_3[i].setFitness(Fitness.fit(sub_individuals_3[i], mine_array_3));
         }
 
         sub_individuals_4 = new Individual[N];
         for (int i=0; i<sub_individuals_4.length; i++) {
             sub_individuals_4[i] = new Individual();
-            if (mine_array_4.length == 0) {
-                break;
-            }
             sub_individuals_4[i].setFitness(Fitness.fit(sub_individuals_4[i], mine_array_4));
         }
 
         sub_individuals_5 = new Individual[N];
         for (int i=0; i<sub_individuals_5.length; i++) {
             sub_individuals_5[i] = new Individual();
-            if (mine_array_5.length == 0) {
-                break;
-            }
             sub_individuals_5[i].setFitness(Fitness.fit(sub_individuals_5[i], mine_array_5));
         }
 
         sub_individuals_6 = new Individual[N];
         for (int i=0; i<sub_individuals_6.length; i++) {
             sub_individuals_6[i] = new Individual();
-            if (mine_array_6.length == 0) {
-                break;
-            }
             sub_individuals_6[i].setFitness(Fitness.fit(sub_individuals_6[i], mine_array_6));
         }
 
         sub_individuals_7 = new Individual[N];
         for (int i=0; i<sub_individuals_7.length; i++) {
             sub_individuals_7[i] = new Individual();
-            if (mine_array_7.length == 0) {
-                break;
-            }
             sub_individuals_7[i].setFitness(Fitness.fit(sub_individuals_7[i], mine_array_7));
         }
 
         sub_individuals_8 = new Individual[N];
         for (int i=0; i<sub_individuals_8.length; i++) {
             sub_individuals_8[i] = new Individual();
-            if (mine_array_8.length == 0) {
-                break;
-            }
             sub_individuals_8[i].setFitness(Fitness.fit(sub_individuals_8[i], mine_array_8));
         }
     }
