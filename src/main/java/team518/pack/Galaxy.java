@@ -2,6 +2,7 @@ package team518.pack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Galaxy {
     private double xMax = 10;
@@ -30,10 +31,33 @@ public class Galaxy {
     private Individual[] sub_individuals_7;
     private Individual[] sub_individuals_8;
 
+    private Map<Integer, Individual[]> individual_map;
+    private Map<Integer, Mine[]> mine_map;
+
     public Galaxy(int N){
         createMine();
         initIndividuals(N);
-        createMine_Array(5);
+        createMine_Array(40);
+        split();
+//        individual_map.put(1,sub_individuals_1);
+//        individual_map.put(2,sub_individuals_2);
+//        individual_map.put(3,sub_individuals_3);
+//        individual_map.put(4,sub_individuals_4);
+//        individual_map.put(5,sub_individuals_5);
+//        individual_map.put(6,sub_individuals_6);
+//        individual_map.put(7,sub_individuals_7);
+//        individual_map.put(8,sub_individuals_8);
+//
+//        mine_map.put(1,mine_array_1);
+//        mine_map.put(2,mine_array_1);
+//        mine_map.put(3,mine_array_1);
+//        mine_map.put(4,mine_array_1);
+//        mine_map.put(5,mine_array_1);
+//        mine_map.put(6,mine_array_1);
+//        mine_map.put(7,mine_array_1);
+//        mine_map.put(8,mine_array_1);
+
+        initSubIndividuals(N);
     }
 
     private void initIndividuals(int N) {
@@ -64,16 +88,91 @@ public class Galaxy {
         }
     }
 
-    private void initIdividuals (int N, Individual[] sub_individuals, Mine[] mines) {
+    private void initWithMap (int N) {
+        //Create sub_individuals_1 -- 8
+        for (int i = 1; i < 9; i++) {
+            Individual[] temp = new Individual[N];
+            //Create N individuals for a sub_individuals_X
+            for (int j=0; j<temp.length; j++) {
+                temp[j] = new Individual();
+            }
+            //individual_map.get(i) = temp;
+            //
+        }
+    }
 
-        if (mines.length == 0) {
-            return;
+    private void initSubIndividuals (int N) {
+
+        sub_individuals_1 = new Individual[N];
+        for (int i=0; i<sub_individuals_1.length; i++) {
+            sub_individuals_1[i] = new Individual();
+            if (mine_array_1.length == 0) {
+                break;
+            }
+            sub_individuals_1[i].setFitness(Fitness.fit(sub_individuals_1[i], mine_array_1));
         }
 
-        sub_individuals = new Individual[N];
-        for (int i=0; i<sub_individuals.length; i++) {
-            sub_individuals[i] = new Individual();
-            sub_individuals[i].setFitness(Fitness.fit(sub_individuals[i], getMine ()));
+        sub_individuals_2 = new Individual[N];
+        for (int i=0; i<sub_individuals_2.length; i++) {
+            sub_individuals_2[i] = new Individual();
+            if (mine_array_2.length == 0) {
+                break;
+            }
+            sub_individuals_2[i].setFitness(Fitness.fit(sub_individuals_2[i], mine_array_2));
+        }
+
+        sub_individuals_3 = new Individual[N];
+        for (int i=0; i<sub_individuals_3.length; i++) {
+            sub_individuals_3[i] = new Individual();
+            if (mine_array_3.length == 0) {
+                break;
+            }
+            sub_individuals_3[i].setFitness(Fitness.fit(sub_individuals_3[i], mine_array_3));
+        }
+
+        sub_individuals_4 = new Individual[N];
+        for (int i=0; i<sub_individuals_4.length; i++) {
+            sub_individuals_4[i] = new Individual();
+            if (mine_array_4.length == 0) {
+                break;
+            }
+            sub_individuals_4[i].setFitness(Fitness.fit(sub_individuals_4[i], mine_array_4));
+        }
+
+        sub_individuals_5 = new Individual[N];
+        for (int i=0; i<sub_individuals_5.length; i++) {
+            sub_individuals_5[i] = new Individual();
+            if (mine_array_5.length == 0) {
+                break;
+            }
+            sub_individuals_5[i].setFitness(Fitness.fit(sub_individuals_5[i], mine_array_5));
+        }
+
+        sub_individuals_6 = new Individual[N];
+        for (int i=0; i<sub_individuals_6.length; i++) {
+            sub_individuals_6[i] = new Individual();
+            if (mine_array_6.length == 0) {
+                break;
+            }
+            sub_individuals_6[i].setFitness(Fitness.fit(sub_individuals_6[i], mine_array_6));
+        }
+
+        sub_individuals_7 = new Individual[N];
+        for (int i=0; i<sub_individuals_7.length; i++) {
+            sub_individuals_7[i] = new Individual();
+            if (mine_array_7.length == 0) {
+                break;
+            }
+            sub_individuals_7[i].setFitness(Fitness.fit(sub_individuals_7[i], mine_array_7));
+        }
+
+        sub_individuals_8 = new Individual[N];
+        for (int i=0; i<sub_individuals_8.length; i++) {
+            sub_individuals_8[i] = new Individual();
+            if (mine_array_8.length == 0) {
+                break;
+            }
+            sub_individuals_8[i].setFitness(Fitness.fit(sub_individuals_8[i], mine_array_8));
         }
     }
 
@@ -148,14 +247,14 @@ public class Galaxy {
 
         }
 
-        mine_array_1 = (Mine[]) list1.toArray(new Mine[list1.size ()]);
-        mine_array_2 = (Mine[]) list2.toArray(new Mine[list2.size ()]);
-        mine_array_3 = (Mine[]) list3.toArray(new Mine[list3.size ()]);
-        mine_array_4 = (Mine[]) list4.toArray(new Mine[list4.size ()]);
-        mine_array_5 = (Mine[]) list5.toArray(new Mine[list5.size ()]);
-        mine_array_6 = (Mine[]) list6.toArray(new Mine[list6.size ()]);
-        mine_array_7 = (Mine[]) list7.toArray(new Mine[list7.size ()]);
-        mine_array_8 = (Mine[]) list8.toArray(new Mine[list8.size ()]);
+        mine_array_1 = list1.toArray(new Mine[list1.size ()]);
+        mine_array_2 = list2.toArray(new Mine[list2.size ()]);
+        mine_array_3 = list3.toArray(new Mine[list3.size ()]);
+        mine_array_4 = list4.toArray(new Mine[list4.size ()]);
+        mine_array_5 = list5.toArray(new Mine[list5.size ()]);
+        mine_array_6 = list6.toArray(new Mine[list6.size ()]);
+        mine_array_7 = list7.toArray(new Mine[list7.size ()]);
+        mine_array_8 = list8.toArray(new Mine[list8.size ()]);
     }
 
     public Individual[] getIndividuals() {

@@ -218,48 +218,102 @@ public class DraftArea {
 	}
  	*///----------------------------
 
-	public static void main (String[] arg) {
+	private static void printMine () {
 		Galaxy galaxy = new Galaxy(10);
-		galaxy.split();
 		Arrays.stream(galaxy.getMine_array_1()).forEach((x)
 				-> {System.out.print(x.getxPosition());
-					System.out.print("\t");
-					System.out.println(x.getRadiation());
+			System.out.print("\t");
+			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_2()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_3()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_4()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_5()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_6()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_7()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+		System.out.println();
 		Arrays.stream(galaxy.getMine_array_8()).forEach((x)
 				-> {System.out.print(x.getxPosition());
 			System.out.print("\t");
 			System.out.println(x.getRadiation());
 		});
+	}
+
+	private static void printIndividual () {
+		Galaxy galaxy = new Galaxy(10);
+		for(Individual x : galaxy.getSub_individuals_1()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_2()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_3()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_4()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_5()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_6()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_7()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+
+		for(Individual x : galaxy.getSub_individuals_8()) {
+			System.out.print(x.getxPosition() + "\t");
+		}
+		System.out.print("\n");
+	}
+	public static void main (String[] arg) {
+		printMine();
+		System.out.println("------");
+		printIndividual();
 	}
 }
