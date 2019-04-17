@@ -21,14 +21,34 @@ public class Species {
         for (int i = num / 2; i < num; i++) {
             int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
             while (r2 == r1) r2 = random.nextInt(num / 2 - 1);
-            //TODO: Bug exist, r1 sometimes equals r2, causing the inbreeding.
-            // It could be eliminated by fixing.
-            // Specifically, the possibility of inbreeding would reduce.
-            // Thus, the mutation is still required.
             aux[i] = new Individual();
             crossOver(aux[i], individuals[r1].getGene(), individuals[r2].getGene());
             mutation(aux[i], aux[i].getGene());
             updateIndividual(aux[i], mine);
+        }
+        System.arraycopy(aux, 0, individuals, 0, aux.length);
+    }
+
+    public static void select(Individual[] individuals, Individual[] aux, Mine[] mine_array) {
+        int num = individuals.length;
+        shuffle(individuals);
+        for (int i = 0; i < num; i = i + 2) {
+            Individual i1 = individuals[i];
+            Individual i2 = individuals[i + 1];
+            double f1 = Fitness.fit(i1, mine_array);
+            double f2 = Fitness.fit(i2, mine_array);
+            //Fitness.fit(i1, mine_array);
+            //Fitness.fit(i2, mine_array);
+            aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
+        }
+
+        for (int i = num / 2; i < num; i++) {
+            int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
+            while (r2 == r1) r2 = random.nextInt(num / 2 - 1);
+            aux[i] = new Individual();
+            crossOver(aux[i], individuals[r1].getGene(), individuals[r2].getGene());
+            mutation(aux[i], aux[i].getGene());
+            updateIndividual(aux[i], mine_array);
         }
         System.arraycopy(aux, 0, individuals, 0, aux.length);
     }
@@ -65,6 +85,12 @@ public class Species {
     private static void updateIndividual(Individual individual, Mine mine) {
         individual.createPhenotype();
         individual.setFitness (Fitness.fit(individual, mine));
+    }
+
+    private static void updateIndividual(Individual individual, Mine[] mine_array) {
+        individual.createPhenotype();
+        individual.setFitness (Fitness.fit(individual, mine_array));
+        //Fitness.fit(individual, mine_array);
     }
 
     private static void shuffle(Individual[] arr) {

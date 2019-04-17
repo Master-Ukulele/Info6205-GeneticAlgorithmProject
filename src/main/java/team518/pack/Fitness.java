@@ -11,19 +11,23 @@ public class Fitness {
 		double y_d = Y-y;
 		double z_d = Z-z;
 		d = Math.sqrt (Math.pow (x_d,2)+Math.pow (y_d,2)+Math.pow (z_d,2));
-		fitness = 1/(mine.getRadiation ()/(d*d));
+		fitness = 1/(mine.getRadiation ()/(d*d)); //Smallest is the best fitted
+		//!!!!! ----- Also change the direction in selecting step if apply the next line ----- !!!!!
+		//fitness = mine.getRadiation ()/(d*d); //Largest is the best fitted
 		return fitness;
 	}
 
-	public static void fit(Individual individual, Mine[] mine){
+	public static double fit(Individual individual, Mine[] mine){
 		List<Double> fitness = new ArrayList<> ();
 		for(Mine m:mine) {
 //			System.out.println (fit (individual, m));
 			fitness.add (fit (individual, m));
 
 		}
-		Collections.sort (fitness,(Double a, Double b)->{return Double.compare (b,a);});
-		individual.setFitness (fitness.get (0));
+		//Collections.sort (fitness,(Double a, Double b)->{return Double.compare (b,a);});
+		Collections.sort(fitness);
+		//individual.setFitness (fitness.get (0));
+		return fitness.get(0);
 	}
 
 }
