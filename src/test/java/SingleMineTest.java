@@ -16,7 +16,7 @@ public class SingleMineTest {
         }
         Arrays.sort(galaxy.getIndividuals());
 //        for (Individual a: aux) System.out.println(a.getRadiationStrength());
-        double res = galaxy.getIndividuals()[N/10].getRadiationStrength();
+        double res = galaxy.getIndividuals()[N/10].getFitness ();
         assertTrue("1/10 of individuals' radiation is equal or less than 5e-3.", res < 0.005);
     }
 

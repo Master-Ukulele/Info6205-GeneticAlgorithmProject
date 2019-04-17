@@ -9,8 +9,7 @@ public class OutPutTest {
 /**
  Galaxy Test:
  */
-        Galaxy galaxy = new Galaxy(10);
-//        galaxy.getMine ().setRadiation (1000);
+        Galaxy galaxy = new Galaxy(1);
         System.out.println(galaxy.getMine().getxPosition());
         System.out.println(galaxy.getMine().getyPosition());
         System.out.println(galaxy.getMine().getzPosition ());
