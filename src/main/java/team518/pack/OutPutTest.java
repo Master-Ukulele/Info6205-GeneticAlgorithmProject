@@ -3,6 +3,8 @@ package team518.pack;
 import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class OutPutTest {
 
@@ -56,5 +58,14 @@ public class OutPutTest {
 
     public static void main(String[] arg) {
         print();
+    }
+    public static void paralel(){
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for(int i = 0; i<10; i++)
+        {
+            Thread thread = new Thread (new myThread(i));
+            executorService.execute (thread);
+        }
+        executorService.shutdown ();
     }
 }

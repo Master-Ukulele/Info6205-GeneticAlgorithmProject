@@ -148,14 +148,14 @@ public class Galaxy {
 
         }
 
-        mine_array_1 = (Mine[]) list1.toArray();
-        mine_array_2 = (Mine[]) list2.toArray();
-        mine_array_3 = (Mine[]) list3.toArray();
-        mine_array_4 = (Mine[]) list4.toArray();
-        mine_array_5 = (Mine[]) list5.toArray();
-        mine_array_6 = (Mine[]) list6.toArray();
-        mine_array_7 = (Mine[]) list7.toArray();
-        mine_array_8 = (Mine[]) list8.toArray();
+        mine_array_1 = (Mine[]) list1.toArray(new Mine[list1.size ()]);
+        mine_array_2 = (Mine[]) list2.toArray(new Mine[list2.size ()]);
+        mine_array_3 = (Mine[]) list3.toArray(new Mine[list3.size ()]);
+        mine_array_4 = (Mine[]) list4.toArray(new Mine[list4.size ()]);
+        mine_array_5 = (Mine[]) list5.toArray(new Mine[list5.size ()]);
+        mine_array_6 = (Mine[]) list6.toArray(new Mine[list6.size ()]);
+        mine_array_7 = (Mine[]) list7.toArray(new Mine[list7.size ()]);
+        mine_array_8 = (Mine[]) list8.toArray(new Mine[list8.size ()]);
     }
 
     public Individual[] getIndividuals() {
