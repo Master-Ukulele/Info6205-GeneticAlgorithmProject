@@ -14,8 +14,8 @@ public class OutPut {
      */
 
     public static ArrayList<Mine> m_array = new ArrayList<>();
-    public static int ind_number = 20;
-    public static int mine_number = 80;
+    public static int ind_number = 30;
+    public static int mine_number = 120;
     public static int j = 0;
 
 
@@ -26,24 +26,24 @@ public class OutPut {
                 -> Double.compare(m2.getRadiation(), m1.getRadiation()));
 
 //        Print the mines
-        System.out.println("Mine rank  /  Reserve /  x  /  y  /  z");
-        System.out.print("\n");
-        int i = 0;
-        for (Mine m : galaxy.getMine_array()) {
-            System.out.print(++i + "\t ");
-            System.out.print(m.getRadiation() + "\t");
-            System.out.print(m.getxPosition() + "\t");
-            System.out.print(m.getyPosition() + "\t");
-            System.out.println(m.getzPosition() + "\t");
-        }
-        System.out.print("\n");
+//        System.out.println("Mine rank  /  Reserve /  x  /  y  /  z");
+//        System.out.print("\n");
+//        int i = 0;
+//        for (Mine m : galaxy.getMine_array()) {
+//            System.out.print(++i + "\t ");
+//            System.out.print(m.getRadiation() + "\t");
+//            System.out.print(m.getxPosition() + "\t");
+//            System.out.print(m.getyPosition() + "\t");
+//            System.out.println(m.getzPosition() + "\t");
+//        }
+//        System.out.print("\n");
 
         paralel(galaxy);
 
 //        Print the result
         System.out.println("Number of mines: " + mine_number + " Number of ships: " + ind_number + " \n");
         System.out.println("GA Result:\nMine rank  /  Reserve /  x  /  y  /  z");
-        System.out.print(++j + "\t ");
+        System.out.print(j+1 + "\t ");
         System.out.print(m_array.get(0).getRadiation() + "\t");
         System.out.print(m_array.get(0).getxPosition() + "\t");
         System.out.print(m_array.get(0).getyPosition() + "\t");

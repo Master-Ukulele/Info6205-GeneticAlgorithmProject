@@ -14,8 +14,8 @@ public class Fitness {
         /**
          * @param d    Distance between the ship and the mine
          * @param R    Mine's radiation
-         * Fitness is evaluated as distance squared divided by mine's radiation,
-         * namely, d^2 / R
+         * Fitness is evaluated as mine's radiation, R, divided by distance squared, d^2,
+         * namely, fitness = R / d^2
          */
 
         double fitness;
@@ -27,7 +27,7 @@ public class Fitness {
         double y_d = Y - y;
         double z_d = Z - z;
         d = Math.sqrt(Math.pow(x_d, 2) + Math.pow(y_d, 2) + Math.pow(z_d, 2));
-        fitness = d * d / R; //Smallest is the best fitted
+        fitness = 1 / (R / (d * d)); //Smallest is the best fitted
         //!!!!! ----- Also change the direction in selecting step if apply the next line ----- !!!!!
         //fitness = mine.getRadiation ()/(d*d); //Largest is the best fitted
         return fitness;

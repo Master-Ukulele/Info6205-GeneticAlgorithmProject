@@ -14,9 +14,9 @@ public class Galaxy {
      */
 
     private ArrayList<Mine> result_list;
-    private double xMax = 100;
-    private double yMax = 100;
-    private double zMax = 100;
+    static double xMax = 100;
+    static double yMax = 100;
+    static double zMax = 100;
     private Individual[] individuals;
     private Mine mine; //Use a container later to storage more mines, e.g. Array, better with HashTable
     //private Blocker blocker; //Design blocker later and its container

@@ -38,9 +38,9 @@ public class Individual implements Comparable<Individual> {
         int subX = Integer.parseInt(subGeneX, 2);
         int subY = Integer.parseInt(subGeneY, 2);
         int subZ = Integer.parseInt(subGeneZ, 2);
-        xPosition = subX * (10.0 - 0) / (Math.pow(2, 10) - 1);
-        yPosition = subY * (10.0 - 0) / (Math.pow(2, 10) - 1);
-        zPosition = subZ * (10.0 - 0) / (Math.pow(2, 10) - 1);
+        xPosition = subX * (Galaxy.xMax - 0) / (Math.pow(2, 10) - 1);
+        yPosition = subY * (Galaxy.yMax - 0) / (Math.pow(2, 10) - 1);
+        zPosition = subZ * (Galaxy.zMax - 0) / (Math.pow(2, 10) - 1);
     }
 
     public String getGene() {
