@@ -1,5 +1,5 @@
 # Genetic Algorithm
-This is the repository of our final project, Team 518, INFO6205, Spring 2019
+This is the repository of our final project, Team 518, INFO6205, Spring 2019  
 Team members: Siyu Tu, Yiyin Chen and Yue Zheng
 
 # About this project
