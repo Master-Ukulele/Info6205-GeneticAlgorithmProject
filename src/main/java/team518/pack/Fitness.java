@@ -14,8 +14,8 @@ public class Fitness {
         /**
          * @param d    Distance between the ship and the mine
          * @param R    Mine's radiation
-         * Fitness is evaluated as mine's radiation, R, divided by distance squared, d^2,
-         * namely, fitness = R / d^2
+         * Fitness is evaluated as distance squared, d^2, divided by mine's radiation, R,
+         * namely, fitness = d^2 / R
          */
 
         double fitness;
