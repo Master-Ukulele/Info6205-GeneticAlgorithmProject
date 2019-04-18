@@ -5,8 +5,6 @@ public class Mine {
     private double yPosition;
     private double zPosition;
     private double radiation;
-    //private double zPosition;
-    //private double reserves; //Later, a constant related to radiation strength
 
     public double getxPosition() {
         return xPosition;
@@ -21,21 +19,22 @@ public class Mine {
     }
 
     public void setyPosition(double yPosition) {
-        this.yPosition = yPosition; }
+        this.yPosition = yPosition;
+    }
 
-    public double getRadiation () {
+    public double getRadiation() {
         return radiation;
     }
 
-    public void setRadiation (double radiation) {
+    public void setRadiation(double radiation) {
         this.radiation = radiation;
     }
 
-    public double getzPosition () {
+    public double getzPosition() {
         return zPosition;
     }
 
-    public void setzPosition (double zPosition) {
+    public void setzPosition(double zPosition) {
         this.zPosition = zPosition;
     }
 }

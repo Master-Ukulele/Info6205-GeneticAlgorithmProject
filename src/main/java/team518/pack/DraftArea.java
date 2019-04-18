@@ -6,6 +6,11 @@ import java.util.Random;
 public class DraftArea {
 
 	/**
+	 *  This is the place we go when we don't
+     *  want to think about genetic algorithm
+	 */
+
+	/**
 	public static double fit(Individual individual, Mine mine){
 		double fitness; //signal strength
 		double d;//distance

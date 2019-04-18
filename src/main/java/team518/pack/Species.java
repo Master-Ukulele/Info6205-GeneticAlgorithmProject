@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class Species {
 
+    /**
+     * This class is used only for selection operation
+     */
+
     private static Random random;
 
     public static void select(Individual[] individuals, Individual[] aux, Mine mine) {
@@ -29,6 +33,9 @@ public class Species {
         System.arraycopy(aux, 0, individuals, 0, aux.length);
     }
 
+    /**
+     * Select after crossover and mutation
+     */
     public static void select(Individual[] individuals, Individual[] aux, Mine[] mine_array) {
         int num = individuals.length;
         shuffle(individuals);
@@ -37,8 +44,6 @@ public class Species {
             Individual i2 = individuals[i + 1];
             double f1 = Fitness.fit(i1, mine_array);
             double f2 = Fitness.fit(i2, mine_array);
-            //Fitness.fit(i1, mine_array);
-            //Fitness.fit(i2, mine_array);
             aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
         }
 
@@ -53,6 +58,9 @@ public class Species {
         System.arraycopy(aux, 0, individuals, 0, aux.length);
     }
 
+    /**
+     * Crossover the genes
+     */
     private static void crossOver(Individual target, String gene1, String gene2) {
         String res = "";
         for (int i = 0; i < 30; i++) {
@@ -65,6 +73,9 @@ public class Species {
         target.setGene(res);
     }
 
+    /**
+     * Mutate the genes
+     */
     private static void mutation(Individual target, String gene) {
         String res = "";
         for (int i = 0; i < 30; i++) {
@@ -82,17 +93,22 @@ public class Species {
         target.setGene(res);
     }
 
+    /**
+     * Update the individual after crossover and mutation
+     */
     private static void updateIndividual(Individual individual, Mine mine) {
         individual.createPhenotype();
-        individual.setFitness (Fitness.fit(individual, mine));
+        individual.setFitness(Fitness.fit(individual, mine));
     }
 
     private static void updateIndividual(Individual individual, Mine[] mine_array) {
         individual.createPhenotype();
-        individual.setFitness (Fitness.fit(individual, mine_array));
-        //Fitness.fit(individual, mine_array);
+        individual.setFitness(Fitness.fit(individual, mine_array));
     }
 
+    /**
+     * Shuffle the individuals
+     */
     private static void shuffle(Individual[] arr) {
         random = new Random();
         int n = arr.length;
