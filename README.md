@@ -1,5 +1,7 @@
 # Genetic Algorithm
-This is the repository of our final project, Team 518, INFO6205, Spring 2019  
+INFO6205, Spring 2019  
+Final project, Team 518  
+
 Team members: Siyu Tu, Yiyin Chen and Yue Zheng
 
 # About this project
@@ -14,4 +16,4 @@ Spaceships, like USS Enterprise, are out in the space looking for a planet with 
 5. Parallelism 
 
 ### Result: 
-The algorithm returns a XYZ coordinate of the target planet. Also, the planet rank (in size) can be displayed to evaluate the accuracy of the result. Details are included in the report.
+The algorithm returns a XYZ coordinate of the target. Also, the planet rank (in size) can be displayed to show the accuracy of the result. A full report with details can be found in the report.
