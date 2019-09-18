@@ -137,7 +137,7 @@ public class Galaxy {
         }
     }
 
-    public void split() {
+    private void split() {
 
         List<Mine> list1 = new ArrayList<>();
         List<Mine> list2 = new ArrayList<>();

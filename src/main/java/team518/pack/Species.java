@@ -9,30 +9,6 @@ public class Species {
      */
 
     private static Random random;
-
-    public static void select(Individual[] individuals, Individual[] aux, Mine mine) {
-
-        int num = individuals.length;
-        shuffle(individuals);
-        for (int i = 0; i < num; i = i + 2) {
-            Individual i1 = individuals[i];
-            Individual i2 = individuals[i + 1];
-            double f1 = Fitness.fit(i1, mine);
-            double f2 = Fitness.fit(i2, mine);
-            aux[i / 2] = f1 < f2 ? i1 : i2;  // Change this logic into compareTo() later
-        }
-
-        for (int i = num / 2; i < num; i++) {
-            int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
-            while (r2 == r1) r2 = random.nextInt(num / 2 - 1);
-            aux[i] = new Individual();
-            crossOver(aux[i], individuals[r1].getGene(), individuals[r2].getGene());
-            mutation(aux[i], aux[i].getGene());
-            updateIndividual(aux[i], mine);
-        }
-        System.arraycopy(aux, 0, individuals, 0, aux.length);
-    }
-
     /**
      * Select after crossover and mutation
      */
@@ -42,15 +18,19 @@ public class Species {
         for (int i = 0; i < num; i = i + 2) {
             Individual i1 = individuals[i];
             Individual i2 = individuals[i + 1];
-            double f1 = Fitness.fit(i1, mine_array);
-            double f2 = Fitness.fit(i2, mine_array);
-            aux[i / 2] = f1 > f2 ? i1 : i2;  // Change this logic into compareTo() later
+            // Change this logic into compareTo() later
+            if (i1.getFitness() > i2.getFitness()) {
+                aux[i/2] = i1;
+                aux[i/2 + num/2] = i2;
+            } else {
+                aux[i/2] = i2;
+                aux[i/2] = i1;
+            }
         }
 
         for (int i = num / 2; i < num; i++) {
             int r1 = random.nextInt(num / 2), r2 = random.nextInt(num / 2 - 1);
             while (r2 == r1) r2 = random.nextInt(num / 2 - 1);
-            aux[i] = new Individual();
             crossOver(aux[i], individuals[r1].getGene(), individuals[r2].getGene());
             mutation(aux[i], aux[i].getGene());
             updateIndividual(aux[i], mine_array);
@@ -62,45 +42,40 @@ public class Species {
      * Crossover the genes
      */
     private static void crossOver(Individual target, String gene1, String gene2) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < 30; i++) {
             if (Math.random() < 0.5) {
-                res += gene1.charAt(i);
+                res.append(gene1.charAt(i));
             } else {
-                res += gene2.charAt(i);
+                res.append(gene2.charAt(i));
             }
         }
-        target.setGene(res);
+        target.setGene(res.toString());
     }
 
     /**
      * Mutate the genes
      */
     private static void mutation(Individual target, String gene) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < 30; i++) {
             if (Math.random() < 0.05) {
                 char c = gene.charAt(i);
                 if (c == '0') {
-                    res += '1';
+                    res.append('1');
                 } else {
-                    res += '0';
+                    res.append('0');
                 }
             } else {
-                res += gene.charAt(i);
+                res.append(gene.charAt(i));
             }
         }
-        target.setGene(res);
+        target.setGene(res.toString());
     }
 
     /**
      * Update the individual after crossover and mutation
      */
-    private static void updateIndividual(Individual individual, Mine mine) {
-        individual.createPhenotype();
-        individual.setFitness(Fitness.fit(individual, mine));
-    }
-
     private static void updateIndividual(Individual individual, Mine[] mine_array) {
         individual.createPhenotype();
         individual.setFitness(Fitness.fit(individual, mine_array));

@@ -1,6 +1,8 @@
 package team518.pack;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -13,9 +15,9 @@ public class OutPut {
      * @param j           An integer to store the rank of the mine found
      */
 
-    public static ArrayList<Mine> m_array = new ArrayList<>();
-    public static int ind_number = 30;
-    public static int mine_number = 120;
+    protected static ArrayList<Mine> m_array = new ArrayList<>();
+    protected static int ind_number = 30;
+    protected static int mine_number = 120;
     public static int j = 0;
 
 
@@ -38,7 +40,7 @@ public class OutPut {
 //        }
 //        System.out.print("\n");
 
-        paralel(galaxy);
+        parallel(galaxy);
 
 //        Print the result
         System.out.println("Number of mines: " + mine_number + " Number of ships: " + ind_number + " \n");
@@ -53,7 +55,7 @@ public class OutPut {
     /**
      * Multi-thread (parallelism)
      */
-    public static void paralel(Galaxy galaxy) {
+    public static void parallel(Galaxy galaxy) {
 
         ExecutorService executorService = Executors.newFixedThreadPool(8);
         Thread thread1 = new Thread(new myThread(galaxy.getSub_individuals_1(), galaxy.getMine_array_1(), 1));
@@ -83,15 +85,16 @@ public class OutPut {
         executorService.shutdown();
 
         //Sleep longer if array index out of bounds
+        int t = 100;
         try {
-            thread1.sleep(300);
-            thread2.sleep(300);
-            thread3.sleep(300);
-            thread4.sleep(300);
-            thread5.sleep(300);
-            thread6.sleep(300);
-            thread7.sleep(300);
-            thread8.sleep(300);
+            thread1.sleep(t);
+            thread2.sleep(t);
+            thread3.sleep(t);
+            thread4.sleep(t);
+            thread5.sleep(t);
+            thread6.sleep(t);
+            thread7.sleep(t);
+            thread8.sleep(t);
         } catch (InterruptedException e) {
 
         } finally {

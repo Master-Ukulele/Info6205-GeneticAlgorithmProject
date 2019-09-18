@@ -1,6 +1,11 @@
 package team518.pack;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Fitness {
 

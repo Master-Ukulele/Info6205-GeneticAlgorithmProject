@@ -12,8 +12,7 @@ public class myThread implements Runnable {
     private Mine[] subMine;
     private int i;
 
-
-    public myThread(Individual[] subIndividual, Mine[] subMine, int i) {
+    protected myThread(Individual[] subIndividual, Mine[] subMine, int i) {
         this.subIndividual = subIndividual;
         this.subMine = subMine;
         this.i = i;

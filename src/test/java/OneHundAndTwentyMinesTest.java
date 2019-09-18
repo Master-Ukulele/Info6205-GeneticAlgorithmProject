@@ -13,7 +13,7 @@ public class OneHundAndTwentyMinesTest {
         Galaxy galaxy = new Galaxy(N, mineNumber);
         Arrays.sort(galaxy.getMine_array(), (Mine m1, Mine m2)
                 -> Double.compare(m2.getRadiation(), m1.getRadiation()));
-        OutPut.paralel(galaxy);
+        OutPut.parallel(galaxy);
         System.out.println(OutPut.j+1);
 
         assertTrue("30 ships, 120 mines failed", (double)(OutPut.j+1) / (double) mineNumber < 0.05);

@@ -80,15 +80,15 @@ public class Individual implements Comparable<Individual> {
     }
 
     private String initGene() {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < GENE_LENGTH; i++) {
             if (Math.random() < 0.5) { // A little improvement to fix a pseudo random
-                res += GENE_0;
+                res.append(GENE_0);
             } else {
-                res += GENE_1;
+                res.append(GENE_1);
             }
         }
-        return res;
+        return res.toString();
     }
 
     public void setGene(String gene) {
